@@ -1,1 +1,5 @@
-# ta_postgre_node
+# TA + PSQL + NODE.js
+
+Transportadora Andina hecha con:
+- Backend: Node.js 
+- Database: PostgreSQL
