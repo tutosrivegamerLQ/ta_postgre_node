@@ -11,6 +11,7 @@ import rd_router from './controllers/rd.controller.js';
 
 // Principal app
 const app = express();
+const PORT = process.env.PORT || 1245
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://tasrm.onrender.com'); // Permitir solicitudes desde cualquier origen
@@ -22,7 +23,7 @@ app.use((req, res, next) => {
 app.setMaxListeners(0);
 
 // Escuchar puerto (localhost:4500)
-app.listen(process.env.PORT);
+app.listen(PORT);
 
 // Para que la API comprenda los "POST" con body JSON
 app.use(express.json());
