@@ -1,7 +1,7 @@
 {
   "name": "psql_node",
   "version": "1.0.0",
-  "description": "Una conexión a la base de datos Postgresql, localmente",
+  "description": "Una conexión a la base de datos Postgresql con azure",
   "main": "./src/main.js",
   "type": "module",
   "scripts": {
