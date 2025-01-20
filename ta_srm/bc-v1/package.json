@@ -1,0 +1,19 @@
+{
+  "name": "psql_node",
+  "version": "1.0.0",
+  "description": "Una conexión a la base de datos Postgresql, localmente",
+  "main": "./src/main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/main.js",
+    "dev": "node --env-file .env --watch ./src/main.js",
+    "test": "node --watch ./src/helpers/helpers.mjs"
+  },
+  "author": "srm-trg",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.13.1"
+  }
+}
