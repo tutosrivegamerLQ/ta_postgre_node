@@ -8,6 +8,7 @@ import mercancia_router from './routes/mercancia.routes.js';
 import caja_router from './routes/caja.routes.js';
 import sobre_router from './routes/sobre.routes.js';
 import rd_router from './controllers/rd.controller.js';
+import cors from 'cors';
 
 // Principal app
 const app = express();
@@ -17,6 +18,14 @@ const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log('Running server in port: ', port);
 });
+
+// Enable CORS
+app.use(
+  cors({
+    origin: 'https://tasrm.onrender.com', // Replace with your frontend origin
+    credentials: true, // If your API requires cookies, set this to true
+  })
+);
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://tasrm.onrender.com');
