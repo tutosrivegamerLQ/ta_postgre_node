@@ -11,7 +11,6 @@ const db_conn = new pg.Pool({
   host: ENV.DB_HOST,
   database: ENV.DB_NAME,
   ssl: ENV.SSL,
-  log: true,
 });
 
 export default db_conn;
