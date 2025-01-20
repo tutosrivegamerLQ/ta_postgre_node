@@ -13,14 +13,7 @@ import rd_router from './controllers/rd.controller.js';
 const app = express();
 const port = process.env.PORT || 4000
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*'); // Permitir solicitudes desde cualquier origen
-  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,PATCH'); // Métodos permitidos
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Encabezados permitidos
-  next();
-});
-
-app.setMaxListeners(0);
+app.setMaxListeners(10);
 
 // Escuchar puerto (localhost:4500)
 app.listen(port, ()=>{
