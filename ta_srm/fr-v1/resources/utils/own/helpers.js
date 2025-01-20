@@ -39,7 +39,7 @@ export default class Helpers {
     if (data instanceof Object && data.body instanceof Object && Object.keys(data.body).length > 0) {
       data.headers = { 'Content-Type': 'application/json; charset=utf-8' }
       data.body = JSON.stringify(data.body)
-      data.mode = 'no-cors
+      data.mode = 'no-cors'
     }
 
     let response
