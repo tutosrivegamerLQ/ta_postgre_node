@@ -19,21 +19,10 @@ app.listen(port, () => {
   console.log('Running server in port: ', port);
 });
 
-// Enable CORS
-// app.use(
-//   cors({
-//     origin: 'https://tasrm.onrender.com', // Replace with your frontend origin
-//     // credentials: true, // If your API requires cookies, set this to true
-//   })
-// );
-
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,PATCH');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  // req.header('Access-Control-Allow-Origin', 'https://tasrm.onrender.com');
-  // req.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,PATCH');
-  // req.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
 

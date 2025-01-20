@@ -51,22 +51,22 @@ export default class Mercancias {
           { formatter: editRowButton, width: 40, hozAlign: 'center', cellClick: Mercancias.#editRowClick },
           { formatter: deleteRowButton, width: 40, hozAlign: 'center', cellClick: Mercancias.#deleteRowClick },
           { title: 'ID', field: 'id', hozAlign: 'center', width: 90 },
-          { title: 'Cliente', field: 'cliente.nombre', width: 200 },
+          { title: 'Cliente', field: 'cliente_id', width: 200 },
           { title: 'Dice contener', field: 'contenido', width: 300 },
-          { title: 'Ingreso', field: 'fechaHoraIngreso', width: 150, formatter: 'datetime', formatterParams: formatDateTime },
-          { title: 'Salida', field: 'fechaHoraSalida', width: 150, formatter: 'datetime', formatterParams: formatDateTime },
-          { title: 'Días', field: 'diasAlmacenado', hozAlign: 'center', width: 65 },
+          { title: 'Ingreso', field: 'fch_ingreso', width: 150, formatter: 'datetime', formatterParams: formatDateTime },
+          { title: 'Salida', field: 'fch_salida', width: 150, formatter: 'datetime', formatterParams: formatDateTime },
+          // { title: 'Días', field: 'diasAlmacenado', hozAlign: 'center', width: 65 },
           { title: 'Alto', field: 'alto', hozAlign: 'center', visible: false },
           { title: 'Ancho', field: 'ancho', hozAlign: 'center', visible: false },
           { title: 'Largo', field: 'largo', hozAlign: 'center', visible: false },
-          { title: 'Vol. m³', field: 'volumen', hozAlign: 'center', width: 80 },
-          { title: 'Costo', field: 'costo', hozAlign: 'right', width: 100, formatter: 'money' },
+          // { title: 'Vol. m³', field: 'volumen', hozAlign: 'center', width: 80 },
+          // { title: 'Costo', field: 'costo', hozAlign: 'right', width: 100, formatter: 'money' },
           { title: 'Bodega', field: 'bodega', width: 280 },
         ],
         responsiveLayout: false, // activado el scroll horizontal, también: ['hide'|true|false]
         initialSort: [
           // establecer el ordenamiento inicial de los datos
-          { column: 'fechaHoraIngreso', dir: 'asc' },
+          { column: 'fch_ingreso', dir: 'asc' },
         ],
         columnDefaults: {
           tooltip: true, //show tool tips on cells
@@ -163,6 +163,7 @@ export default class Mercancias {
 
       // Obtener el objeto con los datos del formulario
       const body = Mercancias.#getFormData()
+      console.log(body)
 
       // Envviar solicitud de creación con los datos del formulario
       let response = await Helpers.fetchJSON(`${urlAPI}/mercancia`, {
@@ -261,11 +262,11 @@ export default class Mercancias {
       document.querySelector(`#${idModal} #alto`).value = rowData.alto
       document.querySelector(`#${idModal} #ancho`).value = rowData.ancho
       document.querySelector(`#${idModal} #largo`).value = rowData.largo
-      document.querySelector(`#${idModal} #ingreso`).value = rowData.fechaHoraIngreso
-      document.querySelector(`#${idModal} #salida`).value = rowData.fechaHoraSalida
+      document.querySelector(`#${idModal} #ingreso`).value = rowData.fch_ingreso
+      document.querySelector(`#${idModal} #salida`).value = rowData.fch_salida
       document.querySelector(`#${idModal} #bodega`).value = rowData.bodega
       // Seleccionar cliente correspondiente
-      selectCustomers.value = rowData.cliente.id
+      selectCustomers.value = rowData.cliente_id
     } else {
       // Asignar fecha-hora actual por defecto al formulario
       const now = DateTime.now()
@@ -282,13 +283,13 @@ export default class Mercancias {
   static #getFormData() {
     return {
       id: document.querySelector(`#${Mercancias.#modal.id} #id`).value,
-      cliente: document.querySelector(`#${Mercancias.#modal.id} #cliente`).value,
+      cliente_id: document.querySelector(`#${Mercancias.#modal.id} #cliente`).value,
       contenido: document.querySelector(`#${Mercancias.#modal.id} #contenido`).value,
       alto: parseFloat(document.querySelector(`#${Mercancias.#modal.id} #alto`).value),
       ancho: parseFloat(document.querySelector(`#${Mercancias.#modal.id} #ancho`).value),
       largo: parseFloat(document.querySelector(`#${Mercancias.#modal.id} #largo`).value),
-      fechaHoraIngreso: document.querySelector(`#${Mercancias.#modal.id} #ingreso`).value,
-      fechaHoraSalida: document.querySelector(`#${Mercancias.#modal.id} #salida`).value,
+      ingreso: document.querySelector(`#${Mercancias.#modal.id} #ingreso`).value,
+      salida: document.querySelector(`#${Mercancias.#modal.id} #salida`).value,
       bodega: document.querySelector(`#${Mercancias.#modal.id} #bodega`).value,
     }
   }
