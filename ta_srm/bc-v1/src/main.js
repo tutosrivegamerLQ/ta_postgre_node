@@ -20,6 +20,13 @@ app.listen(port, ()=>{
   console.log('Running server in port: ', port)
 });
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://tasrm.onrender.com'); // Permitir solicitudes desde cualquier origen
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,PATCH'); // Métodos permitidos
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Encabezados permitidos
+  next();
+});
+
 // Para que la API comprenda los "POST" con body JSON
 app.use(express.json());
 
