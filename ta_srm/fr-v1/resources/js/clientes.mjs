@@ -24,6 +24,7 @@ export default class Clientes {
 
       // Intentar cargar los datos de los datos de los clientes
       response = await Helpers.fetchJSON(`${urlAPI}/cliente`)
+      console.log(response)
       if (response.status != 200 && response.status != 404) {
         throw new Error(response.message)
       }

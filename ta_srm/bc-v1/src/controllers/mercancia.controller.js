@@ -16,6 +16,7 @@ export const get_mercancias = async (sl, rs) => {
 
     rs.json({ status: rs.statusCode, message: 'Mercancias encontradas', size_data: rowCount, data: rows });
   } catch (e) {
+    console.log(e)
     rs.status(500).json({ status: rs.statusCode, message: 'Error al obtener los mercancias', error_code: e.code });
   }
 };

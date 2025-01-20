@@ -53,6 +53,7 @@ export const get_clients = async (req, res) => {
     }
     res.json({ status: res.statusCode, message: 'Clientes encontrados', size_data: rowCount, data: rows });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ status: res.statusCode, message: 'Error al obtener los clientes', error_code: error.code });
   }
 };
