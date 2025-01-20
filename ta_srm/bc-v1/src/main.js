@@ -13,8 +13,6 @@ import rd_router from './controllers/rd.controller.js';
 const app = express();
 const port = process.env.PORT || 4000;
 
-app.setMaxListeners(10);
-
 // Escuchar puerto (localhost:4500)
 app.listen(port, () => {
   console.log('Running server in port: ', port);
